@@ -9,6 +9,14 @@ import { Container, Content, Profile } from './styles';
 
 export default function Header() {
   const profile = useSelector(state => state.user.profile);
+  //console.log('PROFILE: ', profile);
+  let url ='';
+
+  if(profile.avatar !== null){
+    url = profile.avatar.url
+  }else{
+    url = 'https://api.adorable.io/avatars/50/abott@adorable.png';
+  }
 
   return (
     <Container>
@@ -27,8 +35,8 @@ export default function Header() {
             </div>
             <img
               src={
-                profile.avatar.url ||
-                'https://api.adorable.io/avatars/50/abott@adorable.png'
+                url
+
               }
               alt="thur"
             />

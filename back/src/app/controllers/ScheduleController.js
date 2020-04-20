@@ -36,6 +36,8 @@ class ScheduleController {
       order: ['date'],
     });
 
+    //console.log('APPOINTMENTS: ', appointments);
+
     return res.json(appointments);
   }
 }

@@ -33,19 +33,27 @@ export default function Dashboard() {
         params: { date },
       });
 
-      console.log('RESPONSEDATE: ', response);
+      //console.log('RESPONSEDATE: ', response);
+      //console.log('new date:', format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"));
 
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      //const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
       const data = range.map(hour => {
         const checkDate = setSeconds(setMinutes(setHours(date, hour), 0), 0);
-        const compareDate = utcToZonedTime(checkDate, timezone);
+        //const fakeDate = parseISO(format(checkDate, "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"));
+        //console.log('FAKEDATE: ', fakeDate);
+        const compareDate = parseISO(utcToZonedTime(checkDate, timezone));
+        //console.log('COMPAREDATE: ', compareDate);
 
         return {
           time: `${hour}:00h`,
           past: isBefore(compareDate, new Date()),
           appointment: response.data.find(a =>
-            isEqual(parseISO(a.date), compareDate)
+            //console.log(isEqual(parseISO(a.date), fakeDate)),
+            //console.log(a.date),
+            //console.log(a) ,
+            //parseISO(a.date) == compareDate?a.user:'',
+            isEqual(parseISO(a.date), compareDate),
           ),
         };
       });
@@ -55,6 +63,8 @@ export default function Dashboard() {
 
     loadSchedule();
   }, [date]);
+
+  //console.log('schedule: ', schedule);
 
   function handlePrevDay() {
     setDate(subDays(date, 1));
@@ -78,7 +88,7 @@ export default function Dashboard() {
 
       <ul>
         {schedule.map(time => (
-          <Time key={time.time} past={time.past} available={!time.appointment}>
+          <Time key={time.time} past={time.past} available={time.appointment}>
             <strong>{time.time}</strong>
             <span>
               {time.appointment ? time.appointment.user.name : 'Em aberto'}
