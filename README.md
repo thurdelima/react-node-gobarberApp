@@ -142,7 +142,7 @@ Though aplication we can:
 Clone repository
 
 ```bash
-$ git clone https://github.com/thurdelima/node-react-native-searchDevs/
+$ git clone https://github.com/thurdelima/react-node-gobarberApp/
 ```
 
 enter folders front, server and smart and run command
