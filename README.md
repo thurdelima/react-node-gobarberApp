@@ -38,7 +38,7 @@
 </h2>
 
 <blockquote align="center">
-  App mobile for  scheduling shour haircut and update your personal informations. System web for register  and notify hairdressers.
+  App mobile for  scheduling your haircut and update your personal informations. System web for register  and notify hairdressers.
 </blockquote>
 
 <hr/>
