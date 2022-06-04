@@ -38,12 +38,16 @@ export function* signUp({ payload }) {
   try {
     const { name, email, password } = payload;
 
+    console.log('data: ', payload);
+
     yield call(api.post, 'users', {
       name,
       email,
       password,
       provider: false,
     });
+
+    console.log('r response: ', r);
 
 
 

@@ -36,7 +36,7 @@ export default function Dashboard() {
       //console.log('RESPONSEDATE: ', response);
       //console.log('new date:', format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"));
 
-      //const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
       const data = range.map(hour => {
         const checkDate = setSeconds(setMinutes(setHours(date, hour), 0), 0);
